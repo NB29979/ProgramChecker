@@ -24,8 +24,5 @@ def operation_check():
         return 1
 
 
-def
-
-
 if build_check() == 0:
     operation_check()
