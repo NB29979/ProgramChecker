@@ -1,28 +1,31 @@
 import subprocess
 
 
-def build_check():
-    print('starting build...')
+def exec_cmd(command):
     try:
-        res = subprocess.run('gcc HelloWorld.c', shell=True)
+        res=subprocess.run(command,shell=True).stdout
         print(res)
         return 0
     except:
-        print('build exception')
         return 1
 
 
-def operation_check():
-    print('operation check...')
-    try:
-        res = subprocess.run('a.exe < input', shell=True,stdout=subprocess.PIPE)
-        print(res)
-        # TODO:outputと比較
-        return 0
-    except:
-        print('operation check failed')
+def check_program(program_file, answer_file):
+
+    print('State: Starting build...')
+    if exec_cmd('gcc '+program_file) == 1:
+        print('build exception: '+program_file)
+        return 1
+
+    print('State: Checking operation...')
+    if exec_cmd('a.exe<input>program_tmp_output') == 1:
+        print('operation check exception: '+program_file)
+        return 1
+
+    print('State: Checking output...')
+    if exec_cmd('fc program_tmp_output '+answer_file) == 1:
+        print('output check exception: '+program_file)
         return 1
 
 
-if build_check() == 0:
-    operation_check()
+check_program('HelloWorld.c', 'output')
