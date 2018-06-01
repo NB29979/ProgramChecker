@@ -1,6 +1,6 @@
 # ProgramChecker
 C言語のソースファイルが要求されているものかを判定するスクリプト．
-Windows上で動作する．
+Windows上で動作．
 gccおよびPython3が必要．
 
 ## 実行方法
