@@ -33,9 +33,9 @@ def check_program(program_file, input_file, answer_file):
 
 
 def disp_program(program_file):
-    print('-*-*-*-*-*-')
+    print('-*-*-*-*-*-\n')
     exec_cmd('type '+program_file, 'Program file cannot open...')
-    print('\n-*-*-*-*-*-')
+    print('\n\n-*-*-*-*-*-')
 
 
 def record_results(question, results):
