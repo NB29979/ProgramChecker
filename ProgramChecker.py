@@ -69,13 +69,10 @@ for program in programs:
     check_program(program, input_file, output_file)
     disp_program(program)
 
-    ID = exec_cmd('findstr /R  [0-9][0-9] '+program, 'Finding ID Failed')
-    m = re.search(r'[0-9]{10}', ID)
-    ID = m.group(0) if m else 'NaN'
+    ID = program.split('_')[1]
 
+    print(program)
     print('現在の学籍番号: '+ID)
-    id_input = input('学籍番号（変更しない場合Enter） >')
-    if id_input != '': ID = id_input
 
     score = int(input('得点 >'))
     print(program+' : [.c], 得点-> ', end='')
